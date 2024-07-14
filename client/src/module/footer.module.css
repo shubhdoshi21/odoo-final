@@ -1,0 +1,216 @@
+.bgfooter {
+    background:var(--bg-glass);
+    color: var(--text-color);
+   backdrop-filter: blur(20px);
+    margin-top: 50px;
+    height: 300px;
+width: 100%;
+display: flex;
+flex-direction: column;
+z-index: 4;
+overflow-x: hidden;
+  }
+  
+  .sec1 {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+  }
+  
+  .company {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 50px;
+    font-weight: 400;
+  }
+  
+  .divider {
+    width: 100%;
+    height: 0.04em;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0.01),
+      rgba(255, 255, 255, 0.079),
+      #ffffffd1,
+      rgba(255, 255, 255, 0.079),
+      rgba(255, 255, 255, 0.01)
+    );
+  }
+  
+  .sec2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 28%;
+  }
+  
+  .sec3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: 27%;
+  }
+  
+  .sec4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 15%;
+    font-size: 12px;
+  }
+  
+  .icons {
+    background: transparent;
+    top: 0px;
+    color: blue;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.279);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .icons a::after {
+    z-index: -1;
+    content: "";
+    width: 30px;
+    height: 30px;
+    top: -30px;
+    left: 0;
+    background: linear-gradient(
+      40deg,
+      rgb(246, 126, 28),
+      rgb(221, 54, 54),
+      rgb(250, 41, 118),
+      rgb(214, 18, 214)
+    );
+    position: absolute;
+    transition: 0.5s;
+  }
+  
+  .icons a .fab {
+    font-size: 27px;
+    position: absolute;
+    color: white;
+  }
+  
+  .icons a:hover::after {
+    top: 0;
+  }
+  
+  .icons:nth-child(1) a::after {
+    background: linear-gradient(
+      40deg,
+      rgb(246, 126, 28),
+      rgb(221, 54, 54),
+      rgb(250, 41, 118),
+      rgb(214, 18, 214)
+    );
+  }
+  
+  .icons:nth-child(2) a::after {
+    background: linear-gradient(40deg, #96d4fb, #1da1f2);
+  }
+  
+  .icons:nth-child(4) a::after {
+    background: linear-gradient(40deg, rgb(4, 51, 98), rgb(10, 102, 194));
+  }
+  
+  .icons:nth-child(5) a::after {
+    background: linear-gradient(
+      40deg,
+      rgb(0, 255, 255),
+      rgb(0, 191, 255),
+      rgb(0, 128, 255),
+      rgb(0, 64, 255)
+    );
+  }
+  
+  .icons:nth-child(3) a::after {
+    background: red;
+  }
+  
+  .ico {
+    /* Assuming these are general styles you want to apply to all icons */
+    padding-left: 1px;
+    padding-top: 1px;
+    font-size: 27px; /* Adjust as necessary */
+    position: relative;
+  }
+  
+  .head {
+    font-size: 12px;
+  }
+  
+  .sec2 ul  {
+    list-style-type: none;
+  
+  }
+  
+  .sec2 ul li {
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+  }
+  .sociality{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  @media (max-width:600px) {
+    .bgfooter
+    {
+        height: 100vh;
+    }
+    .sec1{
+        height: 1px;
+    }
+    .company{
+        gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px;
+  text-align: center;
+    }
+    .follow{
+        font-size: 14px;
+    }
+    .sec4{
+        font-size: 10px;
+    }
+  }
+
+  @media (max-width:400px) {
+    .sec1
+    {
+        font-size: 36px;
+    }
+  }
+  @media(max-width:900px){
+    .divider{
+        height: 1.5px;
+    }
+   .sec3{
+    padding: 0.75rem;
+   }
+   .sociality{
+    gap: 0.5rem;
+   }
+   .sec4{
+    padding: 0.75rem;
+   }
+  }
+ 

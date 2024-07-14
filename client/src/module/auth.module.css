@@ -1,0 +1,163 @@
+.outer {
+  display: flex;
+  font-family: var(--head);
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.outer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--background-image);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.wrapper {
+  position: relative;
+  background: var(--secondary-color);
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  z-index: 2;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 40px;
+  color: var(--text-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.inputField {
+  position: relative;
+  border-bottom: 2px solid var(--text-color);
+  margin: 15px 0;
+}
+.eyeIcon{
+  color:var(--text-color);
+}
+.inputField label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: var(--text-color);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.15s ease;
+}
+
+.inputField input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.inputField input:focus ~ label,
+.inputField input:valid ~ label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-120%);
+}
+
+.forget {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.forget label {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.wrapper a:hover {
+  text-decoration: underline;
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 2px solid;
+  font-weight: 600;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+
+.button:hover {
+  background-color: var(--secondary-color);
+  border: 2px solid;
+  color: var(--text-color);
+}
+
+.register {
+  text-align: center;
+  margin-top: 30px;
+  color: var(--text-color);
+}
+
+.line {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  margin: 36px 0;
+  background-color: var(--text-color);
+}
+
+.line::before {
+  content: "OR";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--secondary-color);
+  color: var(--text-color);
+  padding: 0 15px;
+}
+
+.Icon {
+  margin-right: 20px;
+}

@@ -1,0 +1,56 @@
+.bgOuter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure it is behind other elements */
+  background-color: var(--background-image); /* or use var(--background-image) if you have a background image variable */
+}
+
+.gridBack {
+  width: 100%;
+  height: 100%;
+  background-image: 
+  linear-gradient(to right, var(--gridc) 1.1px, transparent 1px),
+  linear-gradient(to bottom, var(--gridc) 1.1px, transparent 1px);
+background-size: 70px 70px;
+position: absolute;
+  bottom: 300px;
+  right: 1100px;
+  mask-image: linear-gradient(to bottom right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.gridBack2{
+  width: 100%;
+  height: 100%;
+  background-image: 
+  linear-gradient(to right, var(--gridc) 1.1px, transparent 1px),
+  linear-gradient(to bottom, var(--gridc) 1.1px, transparent 1px);
+background-size: 70px 70px;
+position: absolute;
+  top: 300px;
+  left: 1100px;
+  mask-image: linear-gradient(to top left , rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.glowingCircle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+bottom: 0%;
+left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%,50%);
+  background:#ffb3c6df;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 20px 10px var(--texti-color), 
+  0 0 40px 20px var(--texti-color), 
+  0 0 60px 30px var(--texti-color),
+  0 0 80px 40px var(--texti-color),
+  0 0 90px 60px var(--texti-color),
+  0 0 120px 70px var(--texti-color);
+  pointer-events: none;
+  z-index: 3;
+  transition: transform 0.1s ease-out;
+}

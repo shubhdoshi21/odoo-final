@@ -1,0 +1,146 @@
+const express = require("express");
+const router = express.Router();
+const User = require("../models/user.js");
+const catchAsync = require("../utils/asyncMiddleware.js");
+const isLoggedIn = require("../middleware/isLoggedIn.js");
+const isAdmin = require("../middleware/isAdmin.js");
+
+router.get(
+  "/getUser",
+  [isLoggedIn],
+  catchAsync(async (req, res) => {
+    const { email, name, profilePicture, phoneNumber, isAdmin, authType, _id } =
+      req.user.user;
+    res.json({
+      success: true,
+      status: 200,
+      message: "User fetched successfully",
+      data: {
+        email,
+        name,
+        profilePicture,
+        phoneNumber,
+        isAdmin,
+        authType,
+        _id,
+      },
+    });
+  })
+);
+
+router.post(
+  "/deleteUser",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const user = await User.findById(req.user.user._id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        status: 404,
+        message: "User not found",
+        data: deletedUser,
+      });
+    }
+
+    await User.findByIdAndDelete(req.user.user._id);
+
+    if (req.user.user.authType === "google") {
+      if (req.user && req.user.accessToken) {
+        const token = req.user.accessToken;
+        fetch(`https://oauth2.googleapis.com/revoke?token=${token}`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Token revoked:", data);
+          })
+          .catch((err) => {
+            console.error("Error revoking token:", err);
+          });
+      }
+    }
+
+    req.logout((err) => {
+      if (err) {
+        console.log(err);
+      }
+
+      req.session.destroy((error) => {
+        if (error) {
+          console.log(error);
+        }
+
+        res.clearCookie("connect.sid");
+
+        res.json({
+          success: true,
+          status: 200,
+          message: "User deleted successfully",
+          data: null,
+        });
+      });
+    });
+  })
+);
+
+router.put(
+  "/updateUser",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+      const { name, phoneNumber } = req.body;
+      const user = await User.findByIdAndUpdate(
+        req.user.user._id,
+        { name, phoneNumber },
+        { new: true }
+      );
+      const updatedUser = await user.save();
+      res.status(200).json({
+        success: true,
+        status: 200,
+        message: "Profile updated successfully",
+        data: {
+          name: updatedUser.name,
+          email: updatedUser.email,
+          phoneNumber: updatedUser.phoneNumber,
+        },
+      });
+    } 
+  )
+);
+
+router.post(
+  "/createAdmin",
+  [isLoggedIn, isAdmin],
+  catchAsync(async (req, res) => {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        status: 400,
+        message: "Incorrect email",
+        data: null,
+      });
+    }
+
+    user.isAdmin = true;
+    const newUser = await user.save();
+
+    res.json({
+      success: true,
+      status: 200,
+      message: "Admin added successfully",
+      data: {
+        email: newUser.email,
+        isAdmin: newUser.isAdmin,
+        name: newUser.name,
+        phoneNumber: newUser.phoneNumber,
+      },
+    });
+  })
+);
+
+module.exports = router;
