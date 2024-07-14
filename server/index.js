@@ -4,8 +4,11 @@ const mongoose = require("mongoose");
 const passport = require("./config/passport.js");
 const error = require("./utils/error.js");
 const session = require("express-session");
+const cron = require('node-cron');
 const MongoStore = require("connect-mongo");
 const cookieParser = require("cookie-parser");
+const User = require("./models/user.js")
+const { sendEmail } = require("./utils/nodeMailer.js")
 const localAuth = require("./routes/localAuth.js");
 const googleAuth = require("./routes/googleAuth.js");
 const users = require("./routes/users.js");
@@ -39,6 +42,26 @@ app.use("/payment/api/v1", payment);
 app.use("/books/api/v1", books);
 app.use("/lending/api/v1", lending);
 app.use(error);
+
+cron.schedule('0 0 * * *', async () => { 
+  try {
+    const users = await User.find({ endDate: { $exists: true } });
+
+    for (const user of users) {
+      const { endDate, email } = user;
+      const oneDayBeforeEndDate = moment(endDate).subtract(1, 'days');
+      const currentDate = moment();
+      if (currentDate.isSame(oneDayBeforeEndDate, 'day')) {
+        const subject = 'Reminder: Your End Date is Tomorrow!';
+        const text = 'This is a reminder that your book lend date ends tomorrow.';
+
+        await sendEmail(email, subject, text);
+      }
+    }
+  } catch (err) {
+    console.error('Error fetching users or sending emails:', err);
+  }
+});
 
 mongoose
   .connect(process.env.MONGO_URI)
