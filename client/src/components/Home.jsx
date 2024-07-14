@@ -1,8 +1,10 @@
 import React from 'react'
 import style from "../module/home.module.css"
-import image from "../assets/logo-nobg.png"
+import image from "../assets/logo-pink.png"
+import Genres from './Genres'
 const Home = () => {
   return (
+    <div>
     <div className={style.outerConatiner}>
       
       <div className={style.secondMain}>
@@ -16,6 +18,9 @@ const Home = () => {
       <img src={image} alt="" className={style.firstImg} />
      </div>
      </div>
+     
+    </div>
+    <Genres />
     </div>
   )
 }
