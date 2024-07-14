@@ -10,8 +10,8 @@ router.post(
   "/lendBook",
   isLoggedIn,
   catchAsync(async (req, res) => {
-    const { bookId, endDate, email } = req.body;
-    const book = await Book.findById(bookId);
+    const { ISBN , endDate, email } = req.body;
+    const book = await Book.findOne({ISBN});
     if (!book)
       return res.status(400).json({
         success: false,
@@ -19,6 +19,8 @@ router.post(
         message: "Invalid book ID",
         data: null,
       });
+
+    const bookId = book._id;
 
     const user = await User.findOne(email);
 
@@ -28,7 +30,7 @@ router.post(
       user.bookHistory.push(bookId);
 
       const lend = new Lend({
-        lendedBy: req.user.user._id,
+        lendedBy: user._id,
         lendedBook: bookId,
         startDate: Date.now(),
         endDate
@@ -58,8 +60,8 @@ router.post(
   "/unlendBook",
   isLoggedIn,
   catchAsync(async (req, res) => {
-    const { bookId } = req.body;
-    const book = await Book.findById(bookId);
+    const { ISBN, email } = req.body;
+    const book = await Book.findOne({ISBN});
     if (!book) {
       return res.status(400).json({
         success: false,
@@ -68,7 +70,8 @@ router.post(
         data: null,
       });
     }
-    const user = await User.findById(req.user.user._id);
+    const bookId = book._id;
+    const user = await User.findOne({email});
 
     if (user.borrowedBooks.includes(bookId)) {
       book.quantity = book.quantity + 1;
