@@ -27,7 +27,7 @@
   }
   
   .question {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     padding: 15px;
     cursor: pointer;
     display: flex;
@@ -37,7 +37,7 @@
   }
   
   .question:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--tertiary-color);
   }
   
   .question h4 {
