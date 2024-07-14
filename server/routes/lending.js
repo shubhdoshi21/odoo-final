@@ -58,7 +58,7 @@ router.post(
 
 router.post(
   "/unlendBook",
-  isLoggedIn,
+  [isLoggedIn, isLibrarian],
   catchAsync(async (req, res) => {
     const { bookId } = req.body;
     const book = await Book.findById(bookId);
