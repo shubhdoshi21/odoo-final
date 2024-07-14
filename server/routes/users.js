@@ -167,10 +167,64 @@ router.post(
       message: "Librarian added successfully",
       data: {
         email: newUser.email,
-        isLibraraian: newUser.isLibraraian,
+        isLibrarian: newUser.isLibrarian,
         name: newUser.name,
         phoneNumber: newUser.phoneNumber,
       },
+    });
+  })
+);
+
+router.delete(
+  "/deleteLibrarian",
+  [isLoggedIn, isAdmin],
+  catchAsync(async (req, res) => {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        status: 400,
+        message: "Incorrect email",
+        data: null,
+      });
+    }
+
+    user.isLibrarian = false;
+    const newUser = await user.save();
+
+    res.json({
+      success: true,
+      status: 200,
+      message: "Librarian removed successfully",
+      data: {
+        email: newUser.email,
+        isLibrarian: newUser.isLibrarian,
+        name: newUser.name,
+        phoneNumber: newUser.phoneNumber,
+      },
+    });
+  })
+);
+
+router.get(
+  "/getLibrarians",
+  [isLoggedIn, isAdmin],
+  catchAsync(async (req, res) => {
+    const librarians = await User.find({ isLibrarian: true });
+    if (librarians.length === 0) {
+      return res.status(400).json({
+        success: false,
+        status: 400,
+        message: "No librarian found",
+        data: null,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      status: 200,
+      message: "librarian found successfully",
+      data: librarians,
     });
   })
 );
