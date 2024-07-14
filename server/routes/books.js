@@ -55,6 +55,7 @@ router.post(
           quantity,
           genre,
           title: resp.data.items[0].volumeInfo.title,
+          language: resp.data.items[0].volumeInfo.language,
           description: resp.data.items[0].volumeInfo.description,
           authors: resp.data.items[0].volumeInfo.authors,
           year: resp.data.items[0].volumeInfo.publishedDate,
@@ -140,6 +141,32 @@ router.delete(
       status: 200,
       message: "Book deleted successfully",
       data: null,
+    });
+  })
+);
+
+router.post(
+  "filter",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const { type, value } = req.body;
+    const filter = {};
+    filter[type] = value;
+    const filteredBooks = await Book.find(filter);
+
+    if (filteredBooks.length === 0) {
+      res.json({
+        success: false,
+        status: 404,
+        message: "Books not found",
+        data: null,
+      });
+    }
+    return res.json({
+      success: true,
+      status: 200,
+      message: "Books retrieved successfully",
+      data: filteredBooks,
     });
   })
 );
