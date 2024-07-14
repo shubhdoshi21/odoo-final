@@ -1,11 +1,32 @@
-import React, { useState } from 'react';
-import styles from '../module/dropdownmenu.module.css';
+import React, { useState, useRef } from "react";
+import styles from "../module/dropdownmenu.module.css";
 
-const DropdownMenu = () => {
+const DropdownMenu = ({ onFilterChange }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const genreRef = useRef(null);
+  const authorRef = useRef("");
+  const languageRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleGenreChange = () => {
+    onFilterChange("genre", genreRef.current.value);
+    setIsOpen(false);
+  };
+
+  const handleAuthorChange = (e) => {
+    if (e.key === "Enter") {
+      authorRef.current = e.target.value;
+      onFilterChange("authors", authorRef.current);
+      setIsOpen(false);
+    }
+  };
+
+  const handleLanguageChange = () => {
+    onFilterChange("language", languageRef.current.value);
+    setIsOpen(false);
   };
 
   return (
@@ -19,7 +40,7 @@ const DropdownMenu = () => {
       >
         <span>Filters</span>
         <svg
-          className={`${styles.icon} ${isOpen ? styles.rotate : ''}`}
+          className={`${styles.icon} ${isOpen ? styles.rotate : ""}`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -40,18 +61,52 @@ const DropdownMenu = () => {
           aria-orientation="vertical"
           aria-labelledby="menu-button"
         >
-          <a href="#option1" className={styles.menuItem} role="menuitem">
-            Option 1
-          </a>
-          <a href="#option2" className={styles.menuItem} role="menuitem">
-            Option 2
-          </a>
-          <a href="#option3" className={styles.menuItem} role="menuitem">
-            Option 3
-          </a>
-          <a href="#option4" className={styles.menuItem} role="menuitem">
-            Option 4
-          </a>
+          <div className={styles.menuItem}>
+            <label htmlFor="genreSelect">Genre:</label>
+            <select
+              id="genreSelect"
+              className={styles.formControl}
+              ref={genreRef}
+              onChange={handleGenreChange}
+              required
+            >
+              <option value="">Select Genre</option>{" "}
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Young-Adult">Young-Adult</option>
+              <option value="Children-Books">Children-Books</option>
+              <option value="Graphic-Novels">Graphic-Novels</option>
+            </select>
+          </div>
+          <div className={styles.menuItem}>
+            <label htmlFor="authorInput">Author:</label>
+            <input
+              type="text"
+              id="authorInput"
+              className={styles.formControl}
+              ref={authorRef}
+              onKeyDown={handleAuthorChange}
+              placeholder="Enter author name"
+              required
+            />
+          </div>
+          <div className={styles.menuItem}>
+            <label htmlFor="languageSelect">Language:</label>
+            <select
+              id="languageSelect"
+              className={styles.formControl}
+              ref={languageRef}
+              onChange={handleLanguageChange}
+              required
+            >
+              <option value="">Select Language</option>{" "}
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="zh">Chinese</option>
+            </select>
+          </div>
         </div>
       )}
     </div>

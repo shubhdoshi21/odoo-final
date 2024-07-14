@@ -84,27 +84,8 @@
     margin-top: 6vh;
     grid-area: title;
   }
-  .abt11, 
-  .abt21, 
-  .abt31, 
-  .abt41 {
-    overflow: hidden; 
-    
-  }
-.abt11{
-  grid-area: abt11;
-}
-  .abt11 img,
-  .abt21 img, 
-  .abt31 img, 
-  .abt41 img
-  {
-  object-fit: contain;
-  left: -60%;
-    top: -65%;
-  scale: .5;
-  position: absolute;
-
+  .abt11 {
+    grid-area: abt11;
   }
   
   .about_block::before {
@@ -426,18 +407,4 @@
     .abt41 {
       justify-self: center;
     }
-
-  .abt11 img,
-  .abt21 img, 
-  .abt31 img, 
-  .abt41 img
-  {
-  object-fit: contain;
-  left: -140%;
-    top: -230%;
-  scale: .6;
-  position: absolute;
-
-  }
-  
   }

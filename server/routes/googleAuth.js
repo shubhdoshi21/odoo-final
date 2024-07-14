@@ -12,7 +12,7 @@ router.get(
   "/register/callback",
   passport.authenticate("google", {
     session: true,
-    successRedirect: `${process.env.CLIENT_URL}/home`,
+    successRedirect: `${process.env.CLIENT_URL}/`,
     failureRedirect: "/register",
   }),
   (req, res) => {
