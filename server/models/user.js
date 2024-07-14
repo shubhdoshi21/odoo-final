@@ -1,3 +1,4 @@
+require("./books.js")
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema({
@@ -31,11 +32,17 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
   },
-  
+
   isAdmin: {
     type: Boolean,
     default: false,
   },
+
+  isLibraraian: { type: Boolean, default: false },
+
+  borrowedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Books" }],
+
+  bookHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: "Books" }],
 });
 
 userSchema.methods.isValidPassword = async function (password) {

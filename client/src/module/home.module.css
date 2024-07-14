@@ -57,3 +57,13 @@ justify-content: center;
 .btn{
     background-color: var(--button-bg);
 }
+
+@media (max-width: 450px) {
+    .imageOuter{
+        visibility: hidden;
+    }
+    .outerConatiner{
+        margin-left: 20%;
+    }
+  }
+  

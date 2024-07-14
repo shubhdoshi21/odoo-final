@@ -16,7 +16,7 @@ const Footer = () => {
       {/* Logo and social links section */}
       <div className={`${style.sec1} `}>
         <div>
-          SPRING
+          Elite Reads
         </div>
       </div>
       <div className={`${style.divider}`}></div>

@@ -23,7 +23,6 @@ const Background = () => {
     <div className={style.bgOuter}>
         <div className={style.gridBack}></div>
         <div className={style.gridBack2}></div>
-        <div  className={style.glowingCircle}></div>
     </div>
   )
 }

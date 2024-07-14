@@ -9,15 +9,16 @@ const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const navItems = [
-    { path: "/events", label: "Events" },
-    { path: "/about", label: "About" },
+    { path: "/books", label: "Books" },
+    { path: "/mybooks", label: "My Books" },
     { path: "/team", label: "Team" },
-    { path: "/contact", label: "Contact" },
+    { path: "/faqs", label: "FAQs" },
+    {path: "/aboutus", label: "About Us"}
   ];
 
   const resourcesItems = [
-    { path: "/resources/link", label: "Links" },
-    { path: "/resources/pdf", label: "PDFs" },
+    { path: "/resources/link", label: "My books" },
+    { path: "/resources/pdf", label: "Books" },
   ];
 
   useEffect(() => {
@@ -46,35 +47,7 @@ const Navbar = () => {
 
   return (
     <div className={style.container}>
-      <div className={style.tab}>
-        <input
-          type="checkbox"
-          name="acc"
-          id="chck"
-          className={style.accordianInput}
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-        />
-        <label className={style.tabLabel} htmlFor="chck">
-          Resources
-        </label>
-        <div className={style.tabContent}>
-          <ul className={style.navlinks}>
-            {resourcesItems.map((item, index) => (
-              <NavLink key={index} to={item.path}>
-                <li
-                  className={`${style.element} ${
-                    activeResourceIndex === index ? style.active : ""
-                  }`}
-                  onClick={() => setActiveResourceIndex(index)}
-                >
-                  {item.label}
-                </li>
-              </NavLink>
-            ))}
-          </ul>
-        </div>
-      </div>
+    
       <ul className={style.navlinks}>
         {navItems.map((item, index) => (
           <NavLink key={index} to={item.path}>

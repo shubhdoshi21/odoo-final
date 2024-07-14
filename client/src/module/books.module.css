@@ -64,6 +64,7 @@
 }
 
 .galleryConatiner {
+  position: relative;
     background-color: var(--bg-glass);
     /* old rose color */
     padding: 20px;
@@ -73,6 +74,7 @@
     gap: 10px;
     margin: 40px auto;
     display: flex;
+    flex-wrap: wrap;
   }
   
   /* hsl(20, 43%, 93%) */
@@ -177,10 +179,9 @@
   
 .booki:hover img{
     opacity: 0;
-    transition: all 0.3s;
 }
 .booki:hover::before {
-    opacity: 0; /* Show the black background on hover */
+    opacity: 0;
 }
 .booki:hover::after{
     width: 200px;
@@ -203,3 +204,176 @@
 .booki:hover .content {
     opacity: 1; /* Show content on hover */
 }
+/* @property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.galleryConatiner::before,
+.galleryConatiner::after {
+  content: "";
+  position: absolute;
+  inset: -0.4rem;
+  z-index: 2;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #ff1953 ,
+    #FF8FAB,
+    #FFE5EC,
+    #FF8FAB,
+    #ff1953 
+  );
+  border-radius: 3px;
+  animation: moving 3s linear infinite;
+
+  mask: linear-gradient(
+      to right,
+      black 0.2%,
+      transparent 0%,
+      transparent 99.8%,
+      black 90%
+    ),
+    linear-gradient(
+      to bottom,
+      black 0.5%,
+      transparent 0%,
+      transparent 99.5%,
+      black 90%
+    );
+}
+
+@keyframes moving {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+} */
+@media (max-width:1300px){
+  .row{
+    
+  }
+    .booki::before{
+      content: '';
+      background: #fff;
+      position: absolute;
+      width: 16%;
+      height: 89%;
+      top: 3px;
+      right: 0px;
+      transform: translateX(10%) rotateY(90deg) translateX(calc(50px / 2));
+    }
+    .booki::after{
+      content: ' ';
+      position: absolute;
+      top:0px;
+      left: 0;width: 93%;
+      height: 93%;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      background: var(--book-image);
+      backdrop-filter: blur(10px);
+      transform: translateZ(-50px);
+      box-shadow: -10px 0 40px 10px #6666664c;
+    }
+}
+@media (max-width:1100px){
+ 
+    .booki::before{
+      content: '';
+      background: #fff;
+      position: absolute;
+      width: 16%;
+      height: 89%;
+      top: 3px;
+      right: 0px;
+      transform: translateX(-16%) rotateY(90deg) translateX(calc(50px / 2));
+    }
+    .booki::after{
+      content: ' ';
+      position: absolute;
+      top:0px;
+      left: 0;width: 93%;
+      height: 93%;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      background: var(--book-image);
+      backdrop-filter: blur(10px);
+      transform: translateZ(-40px);
+      box-shadow: -10px 0 40px 10px #6666664c;
+    }
+}
+@media (max-width:900px){
+ 
+    .booki::before{
+      content: '';
+      background: #fff;
+      position: absolute;
+      width: 7%;
+      height: 89%;
+      top: 3px;
+      right: 0px;
+      transform: translateX(-50%) rotateY(90deg) translateX(calc(50px / 2));
+    }
+    .booki::after{
+      content: ' ';
+      position: absolute;
+      top:0px;
+      left: 0;width: 90%;
+      height: 93%;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      background: var(--book-image);
+      backdrop-filter: blur(10px);
+      transform: translateZ(-50px);
+      box-shadow: -10px 0 40px 10px #6666664c;
+    }
+}
+@media (max-width:600px){
+.mainHead{
+  font-size: 28px;
+}
+.header{
+  font-size: 30px;
+}
+.galleryConatiner {
+  padding-top: 50px;
+    width: 70%;
+   padding-right: 0px;
+    gap: 10px;
+   
+  }
+}
+
+@media (max-width:400px){
+  .mainHead{
+    font-size: 18px;
+  }
+  .galleryConatiner {
+    padding-top: 50px;
+      width: 80%;
+     padding-right: 0px;
+      gap: 10px;
+     
+    }
+  }
+  .info{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+    font-size: 17px;
+  }
+  .btn{
+    color: var(--text-color-alt);
+    background-color: var(--bg-glass);
+    border-radius: 30px;
+    box-shadow: 1px 1px 2px var(--text-color),
+    2px 2px 6px var(--text-color),
+    2px 0px 10px var(--text-color);
+    width: 130px;
+    height: 40px;
+  }
