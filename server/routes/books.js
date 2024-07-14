@@ -180,6 +180,13 @@ router.post(
           message: "Books not found",
           data: null,
         });
+      } else {
+        res.json({
+          success: true,
+          status: 200,
+          message: "Books found",
+          data: filteredBooks,
+        });
       }
     }
   })
