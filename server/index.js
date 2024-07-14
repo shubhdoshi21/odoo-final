@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-//const cors = require("cors");
 const passport = require("./config/passport.js");
 const error = require("./utils/error.js");
 const session = require("express-session");
@@ -13,13 +12,8 @@ const users = require("./routes/users.js");
 const app = express();
 const port = process.env.PORT || 3000;
 const payment = require("./routes/payment.js");
-// const corsOptions = {
-//   origin: process.env.CLIENT_URL, // Ensure this is set to 'http://localhost:3001'
-//   methods: "GET,POST,PUT,DELETE",
-//   credentials: true, // This allows cookies and other credentials to be included
-// };
+const books = require("./routes/books.js");
 
-// app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -41,6 +35,7 @@ app.use("/auth/api/v1/local", localAuth);
 app.use("/auth/api/v1/google", googleAuth);
 app.use("/users/api/v1", users);
 app.use("/payment/api/v1", payment);
+app.use("/books/api/v1", books);
 app.use(error);
 
 mongoose
