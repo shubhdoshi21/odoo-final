@@ -143,4 +143,36 @@ router.post(
   })
 );
 
+router.post(
+  "/createLibrarian",
+  [isLoggedIn, isAdmin],
+  catchAsync(async (req, res) => {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        status: 400,
+        message: "Incorrect email",
+        data: null,
+      });
+    }
+
+    user.isLibraraian = true;
+    const newUser = await user.save();
+
+    res.json({
+      success: true,
+      status: 200,
+      message: "Librarian added successfully",
+      data: {
+        email: newUser.email,
+        isLibraraian: newUser.isLibraraian,
+        name: newUser.name,
+        phoneNumber: newUser.phoneNumber,
+      },
+    });
+  })
+);
+
 module.exports = router;
