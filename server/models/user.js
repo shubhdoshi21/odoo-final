@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
     default: false,
   },
 
-  isLibraraian: { type: Boolean, default: false },
+  isLibrarian: { type: Boolean, default: false },
 
   borrowedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Books" }],
 

@@ -158,7 +158,7 @@ router.post(
       });
     }
 
-    user.isLibraraian = true;
+    user.isLibrarian = true;
     const newUser = await user.save();
 
     res.json({
