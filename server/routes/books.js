@@ -192,7 +192,7 @@ router.post(
   })
 );
 
-router.post(
+router.get(
   "/getLatests",
   isLoggedIn,
   catchAsync(async (req, res) => {

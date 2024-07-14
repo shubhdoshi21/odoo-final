@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import style from "../module/adminbooks.module.css";
 import pdflogo from "../assets/download.jpeg";
 import { IoSearch } from "react-icons/io5";
+import { FaPlus, FaTrash } from "react-icons/fa";
 import DropdownMenu from "./DropdownMenu";
-import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 
 const AdminBooks = () => {
@@ -81,8 +81,22 @@ const AdminBooks = () => {
     }
   };
 
-  const pdfItems = Array.from({ length: 9 }, (_, index) => `Pdf${index + 1}`);
-  const displayedItems = filteredItems.length > 0 ? filteredItems : pdfItems;
+  const handleDeleteClick = async (ISBN) => {
+    try {
+      const response = await axios.delete("/books/api/v1/deleteBook", {
+        data: { ISBN },
+      });
+      if (response.data.success) {
+        const newBooks = books.filter((book) => book.ISBN !== ISBN);
+        setBooks(newBooks);
+        setFilteredItems(newBooks);
+      } else {
+        console.log("Error deleting book");
+      }
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  };
 
   return (
     <div className={style.body}>
@@ -116,7 +130,13 @@ const AdminBooks = () => {
                 className={isGridView ? style.gridImgs : style.imgs}
                 alt="Book Thumbnail"
               />
-              <div className={style.texts}>{book.title}</div>
+              <div className={style.texts}>
+                {book.title}
+                <FaTrash
+                  className={style.icon}
+                  onClick={() => handleDeleteClick(book.ISBN)}
+                />
+              </div>
             </div>
           </div>
         ))}

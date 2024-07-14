@@ -1,69 +1,97 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import style from "../module/navbar.module.css";
+import React, { useRef, useState } from "react";
+import styles from "../module/libadmin.module.css";
+import { IoChevronBackCircle } from "react-icons/io5";
+import axios from "axios";
 
-const Navbar = () => {
-  const location = useLocation();
-  const [activeMainIndex, setActiveMainIndex] = useState(null);
-  const [activeResourceIndex, setActiveResourceIndex] = useState(null);
-  const [isChecked, setIsChecked] = useState(false);
+const Libadmin = ({ setShowNewComponent1 }) => {
+  const [loading, setLoading] = useState(false);
 
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/books", label: "Books" },
-    { path: "/history", label: "My history" },
-    { path: "/faqs", label: "FAQs" },
-    {path: "/aboutus", label: "About Us"}
-  ];
+  const emailRef = useRef("");
+  const isbnRef = useRef("");
+  const dateRef = useRef("");
 
-  const resourcesItems = [
-    { path: "/resources/link", label: "My books" },
-    { path: "/resources/pdf", label: "Books" },
-  ];
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    const email = emailRef.current.value;
+    const isbn = isbnRef.current.value;
+    const endDate = dateRef.current.value;
 
-  useEffect(() => {
-    const currentPath = location.pathname;
-    const mainIndex = navItems.findIndex((item) => item.path === currentPath);
-    const resourceIndex = resourcesItems.findIndex(
-      (item) => item.path === currentPath
-    );
+    const formData = {
+      ISBN: isbn,
+      endDate: endDate,
+      email: email,
+    };
 
-    if (mainIndex !== -1) {
-      setActiveMainIndex(mainIndex);
-      setActiveResourceIndex(null);
-    } else if (resourceIndex !== -1) {
-      setActiveResourceIndex(resourceIndex);
-      setActiveMainIndex(null);
-      setIsChecked(true);
-    } else {
-      setActiveMainIndex(null);
-      setActiveResourceIndex(null);
-    }
-  }, [location.pathname, navItems, resourcesItems]);
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+    axios
+      .post(`/lending/api/v1/lendBook`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+    console.log(formData);
   };
 
   return (
-    <div className={style.container}>
-    
-      <ul className={style.navlinks}>
-        {navItems.map((item, index) => (
-          <NavLink key={index} to={item.path}>
-            <li
-              className={`${style.element} ${
-                activeMainIndex === index ? style.active : ""
-              }`}
-              onClick={() => setActiveMainIndex(index)}
-            >
-              {item.label}
-            </li>
-          </NavLink>
-        ))}
-      </ul>
+    <div className={styles.wrapper}>
+      <form
+        id="contact-form"
+        className={styles.contactForm}
+        onSubmit={handleSubmit}
+      >
+        <div className={styles.formGroup}>
+          <input
+            type="email"
+            className={styles.formControl}
+            id="email"
+            placeholder="Email"
+            name="email"
+            ref={emailRef}
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <input
+            type="text"
+            className={styles.formControl}
+            id="isbn"
+            placeholder="ISBN"
+            name="isbn"
+            ref={isbnRef}
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <input
+            type="date"
+            className={styles.formControl}
+            id="date"
+            placeholder="End Date"
+            name="date"
+            ref={dateRef}
+            required
+          />
+        </div>
+        <button
+          className={styles.sendButton}
+          id="submit"
+          type="submit"
+          value="SAVE"
+        >
+          SAVE
+        </button>
+      </form>
     </div>
   );
 };
 
-export default Navbar;
+export default Libadmin;
