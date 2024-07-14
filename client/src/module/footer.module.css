@@ -173,11 +173,17 @@ overflow-x: hidden;
   @media (max-width:600px) {
     .bgfooter
     {
+      border: 2px solid green;
         height: 100vh;
+        padding-top: 90px;
     }
     .sec1{
-        height: 1px;
+        height: 90px;
     }
+    .sec2{
+      padding-bottom: 30px;
+    }
+    
     .company{
         gap: 10px;
   display: grid;
@@ -194,10 +200,22 @@ overflow-x: hidden;
   }
 
   @media (max-width:400px) {
+    .bgfooter{
+      padding-top: 0px;
+    }
+    .sec2{
+      padding-bottom: 50px;
+    }
     .sec1
     {
         font-size: 36px;
     }
+    .sec3{
+      height: 10%;
+     }
+     .bgfooter{
+      height: 80vh;
+     }
   }
   @media(max-width:900px){
     .divider{
@@ -212,5 +230,6 @@ overflow-x: hidden;
    .sec4{
     padding: 0.75rem;
    }
+  
   }
  
