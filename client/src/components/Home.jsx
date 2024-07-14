@@ -2,6 +2,7 @@ import React from 'react'
 import style from "../module/home.module.css"
 import image from "../assets/logo-pink.png"
 import Genres from './Genres'
+import Recommended from './Recommended'
 const Home = () => {
   return (
     <div>
@@ -21,6 +22,7 @@ const Home = () => {
      
     </div>
     <Genres />
+    <Recommended/>
     </div>
   )
 }

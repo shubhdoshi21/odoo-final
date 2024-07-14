@@ -51,8 +51,9 @@ body {
 }
 
 .chapterCard {
+  position: relative;
   background-color: var(--bg-glass);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
@@ -61,7 +62,52 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.chapterCard::before,
+.chapterCard::after {
+  content: "";
+  position: absolute;
+  inset: -0.4rem;
+  z-index: 2;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #ff1953 ,
+    #FF8FAB,
+    #FFE5EC,
+    #FF8FAB,
+    #ff1953 
+  );
+  border-radius: 3px;
+  animation: moving 3s linear infinite;
 
+  mask: linear-gradient(
+      to right,
+      black 0.4%,
+      transparent 0%,
+      transparent 99.6%,
+      black 90%
+    ),
+    linear-gradient(
+      to bottom,
+      black 0.5%,
+      transparent 0%,
+      transparent 99.5%,
+      black 90%
+    );
+}
+
+@keyframes moving {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
 
 .cardSubtitle {
   font-family: var(--head);

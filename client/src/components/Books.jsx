@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import style from "../module/mybooks.module.css";
+import {React,useState,useEffect} from 'react'
+import style from '../module/books.module.css'
 import pdflogo from "../assets/download.jpeg";
 import { IoSearch } from "react-icons/io5";
 import DropdownMenu from "./DropdownMenu";
@@ -81,45 +81,56 @@ const Books = () => {
   };
 
   return (
-    <div className={style.body}>
-      <div className={style.header}>
-        <div>
-          <DropdownMenu onFilterChange={handleFilterChange} />
+    <div className={style.outermost}>
+        <div className={style.sec1}>
+            <h2 className={style.mainHead}>Welcome to the world of BOOKS</h2>
         </div>
-        <div className={style.inside}>
-          <input
-            type="text"
-            className={style.searchBar}
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-          <IoSearch className={style.searchIcon} onClick={handleSearchClick} />
-        </div>
-        <button className={style.toggleButton} onClick={toggleView}>
-          {isGridView ? "List View" : "Grid View"}
-        </button>
-      </div>
-
-      <div className={isGridView ? style.gridContainer : style.listContainer}>
-        {filteredItems.map((book, index) => (
-          <div
-            key={index}
-            className={isGridView ? style.gridElement : style.element}
-          >
-            <div className={isGridView ? style.gridSet : style.set}>
-              <img
-                src={book.thumbnail || pdflogo}
-                className={isGridView ? style.gridImgs : style.imgs}
-                alt="Book Thumbnail"
-              />
-              <div className={style.texts}>{book.title}</div>
+        <div className={style.sec2}>
+        <input
+              type="text"
+              className={style.searchBar}
+              placeholder="Search..." 
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <div className={style.ico}>
+            <IoSearch className={style.searchIcon}  />
+            <RiFilter2Fill className={style.searchIcon}/>
             </div>
-          </div>
-        ))}
-      </div>
+        </div>
+        <div className={style.sec3}>
+            <h2 className={style.header}>New arrivals</h2>
+            <div className={style.galleryConatiner}>
+                 {
+                    BooksAll.map((book,index)=>(
+                        <div>
+                            <div key={index} className={style.row} >
+                            <div className={style.booki} style={{'--book-image':`url(${book.imgs})`}}>
+                                <img src={book.imgs} alt={`Book ${index + 1}`} className={style.bookiImg} />
+                                <div className={style.content}>
+                         <p>{book.Description}</p>
     </div>
-  );
-};
+                            </div>
+                        </div>
+                        <div className={style.info}>
+                            
+                            <span>Borrow Date:</span>
+                            <span>Due Date:</span>
+                            <button className={style.btn}>Get Book</button>
+                        </div>
+
+                        
+                        </div>
+                    ))
+                 }
+                 
+                 
+                </div>
+            </div>
+        </div>
+    
+  )
+}
+
 
 export default Books;
