@@ -7,7 +7,7 @@ const isAdmin = require("../middleware/isAdmin.js");
 const axios = require("axios");
 
 router.get(
-  "getAllBooks",
+  "/getAllBooks",
   isLoggedIn,
   catchAsync(async (req, resp) => {
     const books = await Book.find();
@@ -21,7 +21,7 @@ router.get(
 );
 
 router.get(
-  "getBook",
+  "/getBook",
   isLoggedIn,
   catchAsync(async (req, resp) => {
     const book = await Book.findById(req.body.id);
@@ -100,7 +100,7 @@ router.post(
 );
 
 router.post(
-  "searchBookByTitle",
+  "/searchBookByTitle",
   [isLoggedIn],
   catchAsync(async (req, resp) => {
     const books = await Book.find({
@@ -146,27 +146,75 @@ router.delete(
 );
 
 router.post(
-  "filter",
+  "/filter",
   isLoggedIn,
   catchAsync(async (req, res) => {
     const { type, value } = req.body;
-    const filter = {};
-    filter[type] = value;
-    const filteredBooks = await Book.find(filter);
+    if (type === "authors") {
+      const filteredBooks = await Book.find({ authors: { $in: [value] } });
 
-    if (filteredBooks.length === 0) {
-      res.json({
+      if (filteredBooks.length === 0) {
+        res.json({
+          success: false,
+          status: 404,
+          message: "Books not found",
+          data: null,
+        });
+      } else {
+        res.json({
+          success: true,
+          status: 200,
+          message: "Books found",
+          data: filteredBooks,
+        });
+      }
+    } else {
+      const filter = {};
+      filter[type] = value;
+      const filteredBooks = await Book.find(filter);
+
+      if (filteredBooks.length === 0) {
+        res.json({
+          success: false,
+          status: 404,
+          message: "Books not found",
+          data: null,
+        });
+      } else {
+        res.json({
+          success: true,
+          status: 200,
+          message: "Books found",
+          data: filteredBooks,
+        });
+      }
+    }
+  })
+);
+
+router.post(
+  "/getLatests",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    const latestBooks = await Book.find({
+      createdAt: { $gte: thirtyDaysAgo },
+    }).sort({ createdAt: -1 });
+
+    if (latestBooks.length === 0) {
+      return res.status(400).json({
         success: false,
-        status: 404,
-        message: "Books not found",
+        status: 400,
+        message: "No latest books available",
         data: null,
       });
     }
+
     return res.json({
       success: true,
       status: 200,
-      message: "Books retrieved successfully",
-      data: filteredBooks,
+      message: "Latest books from the last 30 days retrieved successfully",
+      data: latestBooks,
     });
   })
 );
