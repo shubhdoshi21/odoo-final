@@ -3,6 +3,7 @@ import { Route, Routes, NavLink, Navigate } from "react-router-dom";
 import styles from "../module/admin.module.css";
 import ResForm from "./UpResources";
 import Form from "./AddBooks";
+import AdminBooks from "./AdminBooks";
 
 const Admin = () => {
   const [showNewComponent, setShowNewComponent] = useState(false);
@@ -68,12 +69,15 @@ const Admin = () => {
                 ) : (
                   <>
                     {/* <MyBooks setShowNewComponent={setShowNewComponent} /> */}
-                    <div
-                      onClick={() => {
+                    <button className={styles.btn}
+                       onClick={() => {
                         setShowNewComponent(!showNewComponent);
-                      }}
-                    >
-                      shubh
+                      }}>ADD NEW RESOURCE</button>
+                    <div>
+                      <AdminBooks />
+                   
+                      
+                      
                     </div>
                   </>
                 )
