@@ -5,6 +5,7 @@ import ResForm from "./UpResources";
 import Form from "./AddBooks";
 import AdminBooks from "./AdminBooks";
 import Librarian from "./Librarian";
+import AddLibrarian from "./AddLibrarian";
 
 const Admin = () => {
   const [showNewComponent, setShowNewComponent] = useState(false);
@@ -89,10 +90,17 @@ const Admin = () => {
               path="/librarian"
               element={
                 showNewComponent1 ? (
-                  <ResForm setShowNewComponent1={setShowNewComponent1} />
+                  <AddLibrarian setShowNewComponent1={setShowNewComponent1} />
                 ) : (
                   <>
-                    <button className={styles.btn}>ADD NEW LIBRARIAN</button>
+                    <button
+                      className={styles.btn}
+                      onClick={() => {
+                        setShowNewComponent1(!showNewComponent1);
+                      }}
+                    >
+                      ADD NEW LIBRARIAN
+                    </button>
                     <Librarian />
                   </>
                 )

@@ -8,6 +8,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { BsYoutube } from "react-icons/bs"; // Assuming this is where your CSS module is located
 import style from "../module/footer.module.css"
+import { Link } from 'react-router-dom';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -23,11 +24,11 @@ const Footer = () => {
       {/* Links section */}
       <div className={`${style.sec2}`}>
         <ul className={`${style.company}`}>
-          <li>About Us</li>
-          <li>Culture</li>
-          <li>Blog</li>
-          <li>Terms and Policy</li>
-          <li>Help and Support</li>
+          <li><Link to="/aboutus">About Us</Link></li>
+          <li>Home</li>
+          <li>My history</li>
+          <li>FAQs</li>
+          <li>Books</li>
         </ul>
       </div>
       <div className={`${style.divider}`}></div>
@@ -65,7 +66,7 @@ const Footer = () => {
       <div className={`${style.divider}`}></div>
       {/* Copyright section */}
       <div className={`${style.sec4} `}>
-        © Spring Ltd. {currentYear}, All Rights Reserved
+        © Elite Reads Ltd. {currentYear}, All Rights Reserved
       </div>
     </div>
   );
