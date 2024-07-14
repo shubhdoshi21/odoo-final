@@ -4,6 +4,7 @@ const User = require("../models/user.js");
 const catchAsync = require("../utils/asyncMiddleware.js");
 const isLoggedIn = require("../middleware/isLoggedIn.js");
 const isAdmin = require("../middleware/isAdmin.js");
+const Book = require("../models/books.js");
 
 router.get(
   "/getUser",
@@ -90,25 +91,24 @@ router.put(
   "/updateUser",
   isLoggedIn,
   catchAsync(async (req, res) => {
-      const { name, phoneNumber } = req.body;
-      const user = await User.findByIdAndUpdate(
-        req.user.user._id,
-        { name, phoneNumber },
-        { new: true }
-      );
-      const updatedUser = await user.save();
-      res.status(200).json({
-        success: true,
-        status: 200,
-        message: "Profile updated successfully",
-        data: {
-          name: updatedUser.name,
-          email: updatedUser.email,
-          phoneNumber: updatedUser.phoneNumber,
-        },
-      });
-    } 
-  )
+    const { name, phoneNumber } = req.body;
+    const user = await User.findByIdAndUpdate(
+      req.user.user._id,
+      { name, phoneNumber },
+      { new: true }
+    );
+    const updatedUser = await user.save();
+    res.status(200).json({
+      success: true,
+      status: 200,
+      message: "Profile updated successfully",
+      data: {
+        name: updatedUser.name,
+        email: updatedUser.email,
+        phoneNumber: updatedUser.phoneNumber,
+      },
+    });
+  })
 );
 
 router.post(
@@ -158,7 +158,7 @@ router.post(
       });
     }
 
-    user.isLibraraian = true;
+    user.isLibrarian = true;
     const newUser = await user.save();
 
     res.json({
@@ -171,6 +171,44 @@ router.post(
         name: newUser.name,
         phoneNumber: newUser.phoneNumber,
       },
+    });
+  })
+);
+
+router.post(
+  "/getHistory",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const user = await User.findById(req.user.user._id);
+    if (!user)
+      return res.status(400).json({
+        success: false,
+        status: 400,
+        message: "Incorrect user id",
+        data: null,
+      });
+
+    const { bookHistory } = user;
+    const books = await Promise.all(
+      bookHistory.map(async (bookId) => {
+        const book = await Book.findById(bookId);
+        return book; // Return the book object
+      })
+    );
+
+    if (!books)
+      return res.status(400).json({
+        success: false,
+        status: 400,
+        message: "No books found",
+        data: null,
+      });
+
+    res.status(200).json({
+      success: true,
+      status: 200,
+      message: "Books fetched successfully",
+      data: validBooks,
     });
   })
 );

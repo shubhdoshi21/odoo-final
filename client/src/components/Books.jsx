@@ -1,53 +1,85 @@
 import {React,useState,useEffect} from 'react'
 import style from '../module/books.module.css'
-import { GoSearch } from "react-icons/go";
+import pdflogo from "../assets/download.jpeg";
 import { IoSearch } from "react-icons/io5";
-import img1 from "../assets/trendingbook1.jpg"
-import img2 from "../assets/trendingbook2.jpg"
-import img3 from "../assets/trendingbook3.jpg"
-import img4 from "../assets/trendingbook4.jpg"
-import images from "../assets";
-import { RiFilter2Fill } from "react-icons/ri";
+import DropdownMenu from "./DropdownMenu";
+import axios from "axios";
 
 const Books = () => {
-    const BooksAll = [
-        {
-        imgs:images.img1,
-        "Description":"Comprehensive tasks covering Odoo 10 in the right wayAbout  Implement the approval hierarchy and user and ",
-        "available":["yes","no"]
-    },
-     {
-        imgs:images.img2,
-        "Description":"Comprehensive tasks covering Odoo 10 in the right wayAbout This Book* Reduce implementation costs and improve major ",
-        "available":["yes","no"]
-     },
-     {
-        imgs:images.img3,
-        "Description":"Comprehensive tasks covering Odoo 10 in the right wayAbout This Book* Reduce implementation costs and improve major",
-        "available":["yes","no"]
-     },
-     {
-        imgs:images.img1,
-        "Description":"Comprehensive tasks covering Odoo 10 in the right wayAbout This Book* Reduce implementation costs and improve major benchmarks ",
-        "available":["yes","no"]
-     },
-     {
-        imgs:images.img4,
-        "Description":"Comprehensive tasks covering Odoo 10 in the right wayAbout This Book* Reduce implementation costs and improve major ",
-        "available":["yes","no"]
-     },
-     {
-        imgs:images.img4,
-        "Description":"Comprehensive tasks covering Odoo 10 in the right wayAbout This Book* Reduce implementation costs and improve major ",
-        "available":["yes","no"]
-     },
-    
-    ]
-    const [searchQuery, setSearchQuery] = useState("");
-    const handleSearchChange = (e) => {
-        setSearchQuery(e.target.value);
-      };
-    
+  const [isGridView, setIsGridView] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [books, setBooks] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [filterType, setFilterType] = useState("");
+  const [filterValue, setFilterValue] = useState("");
+
+  useEffect(() => {
+    // Fetch books from the backend
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get("books/api/v1/getAllBooks");
+        if (response.data.success) {
+          setBooks(response.data.data);
+          setFilteredItems(response.data.data);
+        }
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+
+    fetchBooks();
+  }, []);
+
+  const toggleView = () => {
+    setIsGridView(!isGridView);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    const newFilteredItems = books.filter((item) =>
+      item.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredItems(newFilteredItems);
+  };
+
+  const handleSearchClick = async () => {
+    try {
+      const response = await axios.post("books/api/v1/searchBookByTitle", {
+        title: searchQuery,
+      });
+      if (response.data.success) {
+        setFilteredItems(response.data.data);
+      } else {
+        setFilteredItems([]);
+        console.log("No books found");
+      }
+    } catch (error) {
+      console.error("Error searching books:", error);
+    }
+  };
+
+  const handleFilterChange = (filterType, filterValue) => {
+    setFilterType(filterType);
+    setFilterValue(filterValue);
+    applyFilter(filterType, filterValue);
+  };
+
+  const applyFilter = async (filterType, filterValue) => {
+    try {
+      const response = await axios.post("books/api/v1/filter", {
+        type: filterType,
+        value: filterValue,
+      });
+      if (response.data.success) {
+        setFilteredItems(response.data.data);
+      } else {
+        setFilteredItems([]);
+      }
+    } catch (error) {
+      console.error("Error applying filter:", error);
+    }
+  };
+
   return (
     <div className={style.outermost}>
         <div className={style.sec1}>
@@ -100,4 +132,5 @@ const Books = () => {
   )
 }
 
-export default Books
+
+export default Books;
