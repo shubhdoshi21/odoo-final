@@ -6,7 +6,7 @@
   height: 100%;
   justify-content: center;
   display: flex;
-  position: relative;
+  /* position: relative; */
   margin-top: 5rem;
 }
 .contactForm {
