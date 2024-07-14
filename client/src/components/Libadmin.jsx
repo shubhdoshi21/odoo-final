@@ -4,50 +4,32 @@ import { IoChevronBackCircle } from "react-icons/io5";
 import axios from "axios";
 
 const Libadmin = ({ setShowNewComponent1 }) => {
-    const [type, setType] = useState("text");
-  const [link, setLink] = useState("");
-  const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const nameRef = useRef("");
-  const descriptionRef = useRef("");
-
-  const handleTypeChange = (event) => {
-    setType(event.target.value);
-  };
-
-  const handleBlankCardClick = () => {
-    setShowNewComponent1((showNewComponent1) => !showNewComponent1);
-  };
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
+  const emailRef = useRef("");
+  const isbnRef = useRef("");
+  const dateRef = useRef("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
-    const name = nameRef.current.value;
-    const description = descriptionRef.current.value;
+    const email = emailRef.current.value;
+    const isbn = isbnRef.current.value;
+    const endDate = dateRef.current.value;
 
-    const formData = new FormData();
-    formData.append("title", name);
-    formData.append("description", description);
-    formData.append("category", type);
-
-    if (type === "link") {
-      formData.append("link", link);
-    } else if (type === "pdf" && file) {
-      formData.append("file", file);
-    }
+    const formData = {
+      ISBN: isbn,
+      endDate: endDate,
+      email: email,
+    };
 
     axios
       .post(
-        `${process.env.REACT_APP_BASE_URL}resources/api/v1/postResource`,
+        `/lending/api/v1/lendBook`,
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
           },
           withCredentials: true,
         }
@@ -60,11 +42,11 @@ const Libadmin = ({ setShowNewComponent1 }) => {
         console.error(error);
         setLoading(false);
       });
+      console.log(formData);
   };
 
   return (
     <div className={styles.wrapper}>
-      
       <form
         id="contact-form"
         className={styles.contactForm}
@@ -72,37 +54,37 @@ const Libadmin = ({ setShowNewComponent1 }) => {
       >
         <div className={styles.formGroup}>
           <input
-            type="text"
+            type="email"
             className={styles.formControl}
-            id="name"
-            placeholder="EMAIL"
-            name="name"
-            ref={nameRef}
+            id="email"
+            placeholder="Email"
+            name="email"
+            ref={emailRef}
             required
           />
         </div>
         <div className={styles.formGroup}>
-        <input
+          <input
             type="text"
             className={styles.formControl}
             id="isbn"
             placeholder="ISBN"
             name="isbn"
-            ref={nameRef}
+            ref={isbnRef}
             required
           />
         </div>
         <div className={styles.formGroup}>
-        <input
+          <input
             type="date"
             className={styles.formControl}
             id="date"
-            placeholder="ISBN"
+            placeholder="End Date"
             name="date"
-            ref={nameRef}
+            ref={dateRef}
             required
           />
-          </div>
+        </div>
         <button
           className={styles.sendButton}
           id="submit"
@@ -113,7 +95,7 @@ const Libadmin = ({ setShowNewComponent1 }) => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Libadmin
+export default Libadmin;
