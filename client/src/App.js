@@ -10,7 +10,12 @@ import FAQs from "./components/FAQs";
 import About from "./components/AboutUs";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
+
+import Books from "./components/Books";
+import Mybooks from "./components/Mybooks";
+=======
 import Admin from "./components/Admin";
+
 
 function App() {
   return (
@@ -25,11 +30,17 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/aboutus" element={<About />} />
+
+            <Route path="/books" element={ <Books /> } />
+            <Route path="/mybooks" element={ <Mybooks /> } />
+=======
             <Route path="/admin/*" element={<Admin />} />
+
             <Route path="*" element={<NotFound />} />
+
           </Routes>
           <TopBar />
-          {/* <Footer/> */}
+          <Footer/> 
         </div>
       </Router>
     </>

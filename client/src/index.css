@@ -16,7 +16,7 @@
   #6A6A6A
   #9DF9EB
   #CB96F7
-  #F1EBF2 */
+  #F1EBF2 */ 
 
   /* dark base-palette: FFC2D1,FFE5EC,FFB3C6,FF8FAB,FB6F92   ; */
   --grid-color-l: #323131;
@@ -32,10 +32,12 @@
   --background-image: var(--background-image-d);
   --button-bg: var(--button-bg-d);
   --bg-glass: var(--bg-glass-d);
+ 
 
-  --texti-color-d: #ffb3c660;
-  --texti-color-l: #f1ebf260;
+  --texti-color-d: #ffb3c6;
+  --texti-color-l: #ffffff60;
   --texti-color: var(--texti-color-d);
+  --gen-col: #ffffff88;
 }
 
 [data-theme="light"] {
@@ -49,6 +51,7 @@
   --button-bg: var(--button-bg-l);
   --bg-glass: var(--bg-glass-l);
   --gridc: var(--grid-color-l);
+  --gen-col: #ffffff;
 }
 body {
   margin: 0;
