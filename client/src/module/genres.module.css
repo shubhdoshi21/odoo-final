@@ -66,6 +66,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 15rem;
   }
   
   .cardSubtitle {
@@ -103,7 +104,7 @@ body {
       gap: 1rem; /* Adjust gap for smaller screens */
     }
     .chapterCard{
-        margin-left: 10%;
+        margin-left: 8%;
     }
     .h3{
         translate: -40%;
