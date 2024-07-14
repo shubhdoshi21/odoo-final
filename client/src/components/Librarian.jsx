@@ -52,28 +52,28 @@ const Librarian = () => {
       <div className={style.header}>
         <div className={style.inside}>
           <div className={style.search}>
-          <input
-            type="text"
-            className={style.searchBar}
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-          <IoSearch
-            className={style.searchIcon}
-            onClick={handleSearchClick}
-          />
+            <input
+              type="text"
+              className={style.searchBar}
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <IoSearch
+              className={style.searchIcon}
+              onClick={handleSearchClick}
+            />
           </div>
         </div>
       </div>
       <div className={style.parent}>
-      {displayedLinks.map((link, index) => (
-        <div key={index} className={style.element}>
-          <h3>{link.title} <FaMinus className={style.icon} /></h3>
-          
-        </div>
-        
-      ))}
+        {displayedLinks.map((link, index) => (
+          <div key={index} className={style.element}>
+            <h3>
+              {link.title} <FaMinus className={style.icon} />
+            </h3>
+          </div>
+        ))}
       </div>
     </div>
   );

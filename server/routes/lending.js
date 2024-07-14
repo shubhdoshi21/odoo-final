@@ -10,7 +10,7 @@ router.post(
   "/lendBook",
   isLoggedIn,
   catchAsync(async (req, res) => {
-    const { bookId, endDate } = req.body;
+    const { bookId, endDate, email } = req.body;
     const book = await Book.findById(bookId);
     if (!book)
       return res.status(400).json({
@@ -20,7 +20,7 @@ router.post(
         data: null,
       });
 
-    const user = await User.findById(req.user.user._id);
+    const user = await User.findOne(email);
 
     if (book.quantity >= 0) {
       book.quantity = book.quantity - 1;

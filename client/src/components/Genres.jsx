@@ -11,7 +11,7 @@ const Genres = () => {
     {
       id: '02',
       title: 'Romance',
-      text: 'A romance is understood to be \'love stories,\' which are focused on the relationship between the main characters of the story. The biggest defining characteristic of the romance genre is that a happy ending is always guaranteed, living \'happily ever after.\''
+      text: 'A romance is understood to be \'love stories,\' which are primarily focused on the relationship between the main characters of the story. The biggest defining characteristic of the romance genre is that a happy ending is always guaranteed, perhaps living \'happily ever after.\''
     },
     {
       id: '03',

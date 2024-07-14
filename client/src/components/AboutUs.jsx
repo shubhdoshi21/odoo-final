@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import style from "../module/aboutus.module.css";
-import rise from "../assets/rise.webp"
 const About = () => {
   return (
     <div className={style.about_body}>
@@ -12,30 +11,95 @@ const About = () => {
           <div className={style.about_block}>
             <div className={style.abt_container1}>
               <div className={style.tag1}>The Rise</div>
-              <div className={style.abt11}><img src={rise} /></div>
+              <div className={style.abt11}>image</div>
               <div className={style.abt1}>
-              Founded in 2024, Elite Library emerged from a passion for knowledge and a commitment to fostering lifelong learning. Our journey began as a modest collection of books in a small town, nurtured by a community that valued education and intellectual growth. Over the years, we expanded our reach, driven by the belief that access to information should be universal. Today, Elite Library boasts an extensive collection of over 100,000 titles, spanning various genres and disciplines. Our rise is a testament to the dedication of our team and the unwavering support of our patrons, who have been integral to our success.
+                Neuralize emerged from a shared passion for Python and AI/ML
+                among a group of university students. What began as informal
+                study sessions quickly evolved into a structured club, driven by
+                the enthusiasm and dedication of its founding members. With a
+                mission to make advanced tech knowledge accessible, Neuralize
+                started hosting workshops, seminars, and collaborative projects
+                that attracted a growing number of participants. The club's
+                commitment to hands-on learning and real-world application
+                resonated with students, leading to rapid membership growth and
+                increased visibility on campus. As Neuralize's reputation for
+                fostering innovation and technical excellence spread, it
+                garnered support from faculty and industry professionals.
+                Partnerships and sponsorships soon followed, providing resources
+                and opportunities for members to engage in cutting-edge research
+                and development. The rise of Neuralize is a testament to the
+                power of community and collective ambition, transforming it into
+                a beacon for aspiring tech enthusiasts and future leaders
               </div>
             </div>
             <div className={style.abt_container}>
               <div className={style.tag2}>The Vision</div>
-              <div className={style.abt21}><img src={rise} /></div>
+              <div className={style.abt21}>image</div>
               <div className={style.abt2}>
-              At Elite Library, our vision is to become a beacon of knowledge and a hub for intellectual engagement. We aim to inspire and empower individuals by providing access to diverse resources that cater to the interests and needs of our community. Our commitment to excellence is reflected in our carefully curated collections, state-of-the-art facilities, and innovative programs. We envision a future where Elite Library is not just a repository of books but a dynamic space for learning, creativity, and collaboration. By embracing technology and fostering a culture of inclusivity, we strive to make knowledge accessible to everyone, everywhere.
+                The ultimate vision of Neuralize is to create a thriving
+                ecosystem where students are at the forefront of technological
+                innovation and advancement. We aspire to be a leading hub for
+                learning and exploration in Python and AI/ML, empowering
+                students to push the boundaries of what’s possible. By fostering
+                a culture of curiosity, collaboration, and continuous
+                improvement, Neuralize envisions a future where our members
+                drive groundbreaking discoveries and applications in technology.
+                We aim to bridge academic knowledge with industry demands,
+                preparing students for successful careers in tech. Our vision
+                includes building a diverse and inclusive community that values
+                every perspective, encouraging creative problem-solving and
+                entrepreneurship. Ultimately, Neuralize seeks to inspire
+                students to become global tech leaders who contribute to solving
+                real-world challenges and making a positive impact on society
+                through technology.
               </div>
             </div>
             <div className={style.abt_container}>
               <div className={style.tag3}>The Reason</div>
-              <div className={style.abt31}><img src={rise} /></div>
+              <div className={style.abt31}>image</div>
               <div className={style.abt3}>
-              The core reason behind the establishment of Elite Library lies in our belief that knowledge is the foundation of progress. We understand that in an ever-changing world, access to information is crucial for personal and societal growth. Elite Library was created to bridge the gap between individuals and the wealth of knowledge available, ensuring that everyone has the opportunity to learn, grow, and succeed. Our dedicated team works tirelessly to provide a welcoming environment where curiosity is encouraged, and learning is celebrated. We are driven by the desire to create a community of informed and empowered individuals who can make meaningful contributions to society.
+                Neuralize was established to address the low interest in AI/ML
+                among university students and to spread awareness about these
+                transformative fields. The founders noticed that despite the
+                rapid advancements in technology, many students were unaware of
+                the potential and opportunities within AI/ML. Driven by a
+                passion for these disciplines, they created Neuralize to ignite
+                curiosity and enthusiasm among their peers. The club aims to
+                demystify AI/ML by offering accessible, hands-on learning
+                experiences that bridge the gap between theory and practice.
+                Through workshops, seminars, and collaborative projects,
+                Neuralize provides a supportive environment for students to
+                explore and engage with cutting-edge technologies. The goal is
+                to inspire a new generation of tech enthusiasts who are equipped
+                with the knowledge and skills to innovate and lead in the AI/ML
+                landscape. Ultimately, Neuralize seeks to cultivate a vibrant
+                community where students can discover their potential and
+                contribute to the future of technology.
               </div>
             </div>
             <div className={style.abt_container}>
               <div className={style.tag4}>The Future</div>
-              <div className={style.abt41}><img src={rise} /></div>
+              <div className={style.abt41}>image</div>
               <div className={style.abt4}>
-              Looking ahead, the future of Elite Library is bright and full of possibilities. We are committed to evolving with the times, continuously enhancing our offerings to meet the changing needs of our patrons. Our plans include expanding our digital library, introducing more interactive and virtual learning experiences, and fostering partnerships with educational institutions and cultural organizations. We envision Elite Library as a cornerstone of our community, a place where people of all ages and backgrounds can come together to explore, learn, and grow. As we move forward, our focus will remain on innovation, inclusivity, and excellence, ensuring that Elite Library continues to be a trusted source of knowledge and inspiration for generations to come.
+                The future of Neuralize is envisioned as a hub for cutting-edge
+                knowledge and innovation in various AI technologies, including
+                natural language processing, computer vision, large language
+                models, and more. We aim to expand our offerings to include
+                specialized workshops and seminars on these advanced topics,
+                providing students with the latest insights and practical
+                skills. Neuralize will foster a collaborative environment where
+                members can work on interdisciplinary projects, pushing the
+                boundaries of what’s possible in AI. We plan to establish
+                partnerships with industry leaders and academic institutions to
+                bring in expert speakers and mentorship opportunities. Our goal
+                is to create a comprehensive learning platform that not only
+                educates but also inspires students to innovate and lead in the
+                AI field. As Neuralize grows, we envision our members making
+                significant contributions to AI research and development,
+                driving technological advancements, and shaping the future of
+                the industry. Together, we will build a vibrant community of
+                future tech leaders, equipped to tackle the world's most
+                challenging problems with AI.
               </div>
             </div>
           </div>

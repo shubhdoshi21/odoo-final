@@ -70,15 +70,16 @@ const Admin = () => {
                 ) : (
                   <>
                     {/* <MyBooks setShowNewComponent={setShowNewComponent} /> */}
-                    <button className={styles.btn}
-                       onClick={() => {
+                    <button
+                      className={styles.btn}
+                      onClick={() => {
                         setShowNewComponent(!showNewComponent);
-                      }}>ADD NEW RESOURCE</button>
+                      }}
+                    >
+                      ADD NEW RESOURCE
+                    </button>
                     <div>
                       <AdminBooks />
-                   
-                      
-                      
                     </div>
                   </>
                 )
@@ -91,8 +92,8 @@ const Admin = () => {
                   <ResForm setShowNewComponent1={setShowNewComponent1} />
                 ) : (
                   <>
-                  <button className={styles.btn}>ADD NEW LIBRARIAN</button>
-                  <Librarian />
+                    <button className={styles.btn}>ADD NEW LIBRARIAN</button>
+                    <Librarian />
                   </>
                 )
               }
