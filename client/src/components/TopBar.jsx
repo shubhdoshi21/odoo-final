@@ -79,10 +79,11 @@ const TopBar = () => {
   };
 
   const navItems = [
-    { path: "/events", label: "Events" },
-    { path: "/about", label: "About" },
-    { path: "/team", label: "Team" },
-    { path: "/contact", label: "Contact" },
+     { path: "/", label: "Home" },
+    { path: "/books", label: "Books" },
+    { path: "/history", label: "My history" },
+    { path: "/faqs", label: "FAQs" },
+    {path: "/aboutus", label: "About Us"}
   ];
 
   const resourcesItems = [
@@ -179,9 +180,7 @@ const TopBar = () => {
                       id="chck1"
                       className={style.accordianInput}
                     />
-                    <label className={style.tabLabel} htmlFor="chck1">
-                      Resources
-                    </label>
+                    
                     <div className={style.tabContent}>
                       {resourcesItems.map((item) => (
                         <Link

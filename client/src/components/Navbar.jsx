@@ -9,9 +9,9 @@ const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const navItems = [
+    { path: "/", label: "Home" },
     { path: "/books", label: "Books" },
-    { path: "/mybooks", label: "My Books" },
-    { path: "/team", label: "Team" },
+    { path: "/history", label: "My history" },
     { path: "/faqs", label: "FAQs" },
     {path: "/aboutus", label: "About Us"}
   ];
