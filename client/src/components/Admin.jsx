@@ -4,6 +4,7 @@ import styles from "../module/admin.module.css";
 import ResForm from "./UpResources";
 import Form from "./AddBooks";
 import AdminBooks from "./AdminBooks";
+import Librarian from "./Librarian";
 
 const Admin = () => {
   const [showNewComponent, setShowNewComponent] = useState(false);
@@ -90,7 +91,8 @@ const Admin = () => {
                   <ResForm setShowNewComponent1={setShowNewComponent1} />
                 ) : (
                   <>
-                    {/* <Resources setShowNewComponent1={setShowNewComponent1} /> */}
+                  <button className={styles.btn}>ADD NEW LIBRARIAN</button>
+                  <Librarian />
                   </>
                 )
               }
