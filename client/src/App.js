@@ -13,7 +13,6 @@ import Footer from "./components/Footer";
 
 import Books from "./components/Books";
 import Mybooks from "./components/Mybooks";
-=======
 import Admin from "./components/Admin";
 
 
@@ -33,7 +32,6 @@ function App() {
 
             <Route path="/books" element={ <Books /> } />
             <Route path="/mybooks" element={ <Mybooks /> } />
-=======
             <Route path="/admin/*" element={<Admin />} />
 
             <Route path="*" element={<NotFound />} />

@@ -114,6 +114,17 @@
   font-size: 18px;
 }
 
+.btn{
+  padding: 1rem;
+  width: 100%;
+  font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #6c757d71;
+    color: var(--text-color);
+    border-radius: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .adminContainer {
     margin: 10vh 10px;
