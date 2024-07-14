@@ -113,6 +113,8 @@ const TopBar = () => {
         <img src={images.profile} alt="Logo" className={style.webLogo} />
       </Link>
       {location.pathname !== "/auth/login" &&
+        location.pathname !== "/admin/books" &&
+        location.pathname !== "/admin/librarian" &&
         location.pathname !== "/auth/register" && <Navbar />}
       {window.innerWidth > 1024 ? (
         <div className={style.rightComponent}>

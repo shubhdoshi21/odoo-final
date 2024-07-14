@@ -1,0 +1,97 @@
+.wrapper {
+background-image: var(--background-image);
+  font-family: var(--body);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+.backButton {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: white;
+  background-color: transparent;
+  font-size: 50px;
+  border: none;
+}
+.backButton:hover {
+  background-color: transparent;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  font-weight: 400;
+  color: var(--text-color);
+  padding: 2.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formControl,
+textarea {
+  outline: none;
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  letter-spacing: 0.0625rem;
+  border: 0.0625rem solid var(--text-color);
+  padding: 0.625rem;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.formControl::placeholder,
+textarea::placeholder {
+  color: var(--text-color);
+  opacity: 1;
+}
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+
+  background-color: #f2f2f2b0; /* Light grey background, attempt to style the picker */
+}
+
+
+.sendButton {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+
+.label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* .radioLabel {
+  margin: 0 1rem;
+} */
+
+.fileInputLabel {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.fileInput {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+textarea {
+  margin-bottom: 1.25rem;
+}
