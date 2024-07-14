@@ -10,7 +10,7 @@ router.post(
   "/lendBook",
   isLoggedIn,
   catchAsync(async (req, res) => {
-    const { bookId } = req.body;
+    const { bookId, endDate } = req.body;
     const book = await Book.findById(bookId);
     if (!book)
       return res.status(400).json({
@@ -31,6 +31,7 @@ router.post(
         lendedBy: req.user.user._id,
         lendedBook: bookId,
         startDate: Date.now(),
+        endDate
       });
 
       const lendedDetails = await lend.save();
