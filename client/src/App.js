@@ -10,7 +10,6 @@ import FAQs from "./components/FAQs";
 import About from "./components/AboutUs";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
-import Libadmin from "./components/Libadmin";
 import Books from "./components/Books";
 import Mybooks from "./components/Mybooks";
 import Admin from "./components/Admin";
@@ -21,6 +20,7 @@ function App() {
       <Background />
       <Router>
         <div>
+        <TopBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth/login" element={<Login />} />
@@ -31,11 +31,10 @@ function App() {
             <Route path="/books" element={<Books />} />
             <Route path="/history" element={<Mybooks />} />
             
-            <Route path="/lib" element={<Libadmin /> } />
             <Route path="/admin/books" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <TopBar />
+         
           <Footer />
         </div>
       </Router>
