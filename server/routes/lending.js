@@ -2,13 +2,15 @@ const express = require("express");
 const router = express.Router();
 const catchAsync = require("../utils/asyncMiddleware.js");
 const isLoggedIn = require("../middleware/isLoggedIn.js");
+const isLibrarian = require("../middleware/isLibrarian.js");
 const Book = require("../models/books.js");
 const User = require("../models/user.js");
 const Lend = require("../models/lending.js");
 
+
 router.post(
   "/lendBook",
-  isLoggedIn,
+  [isLoggedIn, isLibrarian],
   catchAsync(async (req, res) => {
     const { bookId, endDate, email } = req.body;
     const book = await Book.findById(bookId);
