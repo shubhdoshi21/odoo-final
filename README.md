@@ -1,98 +1,70 @@
-Elite Reads - Library Management System
-Welcome to Elite Reads, a comprehensive library management system designed to streamline the process of managing library resources. This application leverages modern web technologies to provide a seamless user experience for both administrators and users.
+<h1 align="center" id="title">Elite Reads</h1>
 
-Table of Contents
-Features
-Technologies Used
-Installation
-Usage
-Contributing
-License
-Features
-User Authentication and Authorization:
+<p id="description">Welcome to Elite Reads a comprehensive library management system designed to streamline the process of managing library resources. This application leverages modern web technologies to provide a seamless user experience for both administrators and users. With a focus on user-friendly interfaces and robust functionality Elite Reads simplifies the complexities of library management enabling libraries to operate more efficiently and effectively. Elite Reads serves as a central hub for library activities ensuring that both users and librarians have access to essential features that enhance their experience. Whether you're looking to borrow books manage a collection or oversee library operations this system has you covered.</p>
 
-User Registration: Users can register with the system, and their information is securely stored using cookies.
-Login with Google: Users have the option to log in using their Google accounts for added convenience.
-Book Management:
+  
+  
+<h2>🧐 Features</h2>
 
-Display All Books: View a comprehensive list of all books available in the library.
-New Arrivals: Easily browse the latest additions to the library collection.
-Librarian Panel:
+Here're some of the project's best features:
 
-Lend Books: Librarians can lend books to users and manage lending records.
-Admin Panel:
+*   User Authentication and Authorization
+*   Login with Google
+*   Display All Books
+*   New Arrivals
+*   Librarian Panel
+*   Admin Panel
+*   Add Books
+*   Add Librarian
+*   Filter Functionality
+*   User Profile
+*   FAQ's
+*   AboutUs
 
-Add Books: Administrators can add new books to the library collection.
-Add Librarian: Administrators can add new librarians to the system.
-Books Page:
+<h2>🛠️ Installation Steps:</h2>
 
-Filter Functionality: Users can filter books by genre, language, and other criteria.
-User Profile:
+<p>1. To get a local copy of the project up and running follow these steps:</p>
 
-Change Password: Users can change their passwords from their profile page.
-Email Notifications: Users receive updates and notifications via email.
+```
+https://github.com/shubhdoshi21/odoo-final.git
+```
 
-Additional Pages:
+<p>2. vigate to the project directory:</p>
 
-FAQs: A page for frequently asked questions to help users with common issues.
-About Us: A page providing information about the library and its mission.
-Technologies Used
-Frontend:
+```
+cd odoo-final
+```
 
-JavaScript
-React
-CSS
-HTML
-Backend:
+<p>3. Go to backend</p>
 
-MongoDB
-Installation
-To get a local copy of the project up and running, follow these steps:
+```
+cd server
+```
 
-Clone the repository:
+<p>4. Start the backend server</p>
 
-sh
-Copy code
-git clone https://github.com/your-username/elite-reads.git
-Navigate to the project directory:
+```
+node index.js
+```
 
-sh
-Copy code
-cd elite-reads
-Install the required dependencies:
+<p>5. Start the frontend</p>
 
-sh
-Copy code
-npm install
-Set up the backend:
+```
+npm run start
+```
 
-Ensure you have MongoDB installed and running on your system.
-Create a .env file in the root directory and add your MongoDB connection string:
-env
-Copy code
-MONGO_URI=your-mongodb-connection-string
-Start the development server:
+<p>6. Create a env file</p>
 
-sh
-Copy code
-npm start
-Usage
-Once the development server is up and running, you can access the application in your web browser at http://localhost:3000. From there, you can:
+  
+  
+<h2>💻 Built with</h2>
 
-Register a new account or log in with your Google account.
-Browse the complete list of books available in the library.
-Check out the new arrivals section to see the latest additions.
-Use the filter functionality to find books by genre, language, and other criteria.
-Access the user profile to change passwords.
-Visit the FAQs page for help with common issues.
-Learn more about the library on the About Us page.
-Contributing
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+Technologies used in the project:
 
-Fork the Project
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-Push to the Branch (git push origin feature/AmazingFeature)
-Open a Pull Request
-License
-Distributed under the MIT License. See LICENSE for more information.
+*   Javascript
+*   React
+*   HTML
+*   CSS
+*   Express.js
+*   MongoDb
+*   Node.js
