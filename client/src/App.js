@@ -29,7 +29,7 @@ function App() {
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/aboutus" element={<About />} />
             <Route path="/books" element={<Books />} />
-            <Route path="/mybooks" element={<Mybooks />} />
+            <Route path="/history" element={<Mybooks />} />
             =======
             <Route path="/admin/*" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
