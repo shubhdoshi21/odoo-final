@@ -34,7 +34,7 @@ const Recommended = () => {
           <span className={style.span} />
         </h2>
         <div className={style.galleryConatiner}>
-          {books.map((book, index) => (
+          {books && books.map((book, index) => (
             <div key={index}>
               <div className={style.row}>
                 <div
@@ -47,7 +47,7 @@ const Recommended = () => {
                     className={style.bookiImg}
                   />
                   <div className={style.content}>
-                    <p>{book.Description}</p>
+                    <p>{book.description}</p>
                   </div>
                 </div>
               </div>

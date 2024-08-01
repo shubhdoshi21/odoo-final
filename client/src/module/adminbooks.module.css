@@ -60,6 +60,7 @@
 .texts {
   margin-top: 1rem;
   margin-left: 1rem;
+  position: relative;
 }
 
 .listContainer {
@@ -107,6 +108,7 @@
 .icon {
   font-size: larger;
   margin-left: 1rem;
+  position: absolute;
 }
 
 @media (max-width: 1024px) {

@@ -15,7 +15,7 @@ const Books = () => {
     // Fetch books from the backend
     const fetchBooks = async () => {
       try {
-        const response = await axios.get("books/api/v1/getAllBooks");
+        const response = await axios.get("/books/api/v1/getAllBooks");
         console.log(response);
         if (response.data.success) {
           setBooks(response.data.data);
@@ -94,7 +94,7 @@ const Books = () => {
       </div>
 
       <div className={style.sec3}>
-        <h2 className={style.header}>New arrivals</h2>
+        <h2 className={style.header}>All arrivals</h2>
         <div className={style.galleryConatiner}>
           {filteredItems.map((book, index) => (
             <div>
@@ -114,7 +114,7 @@ const Books = () => {
                 </div>
               </div>
               <div className={style.info}>
-                <button className={style.btn}>Get Book</button>
+                <button className={style.btn}>{book.title}</button>
               </div>
             </div>
           ))}

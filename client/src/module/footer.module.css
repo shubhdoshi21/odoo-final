@@ -173,7 +173,6 @@ overflow-x: hidden;
   @media (max-width:600px) {
     .bgfooter
     {
-      border: 2px solid green;
         height: 100vh;
         padding-top: 90px;
     }

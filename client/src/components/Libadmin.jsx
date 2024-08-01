@@ -3,7 +3,7 @@ import styles from "../module/libadmin.module.css";
 import { IoChevronBackCircle } from "react-icons/io5";
 import axios from "axios";
 
-const Libadmin = ({ setShowNewComponent1 }) => {
+const Libadmin = () => {
   const [loading, setLoading] = useState(false);
 
   const emailRef = useRef("");
@@ -24,16 +24,12 @@ const Libadmin = ({ setShowNewComponent1 }) => {
     };
 
     axios
-      .post(
-        /lending/api/v1/lendBook,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      )
+      .post("/lending/api/v1/lendBook", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res);
         setLoading(false);
@@ -42,7 +38,7 @@ const Libadmin = ({ setShowNewComponent1 }) => {
         console.error(error);
         setLoading(false);
       });
-      console.log(formData);
+    console.log(formData);
   };
 
   return (

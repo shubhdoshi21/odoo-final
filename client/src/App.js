@@ -13,6 +13,8 @@ import Footer from "./components/Footer";
 import Books from "./components/Books";
 import Mybooks from "./components/Mybooks";
 import Admin from "./components/Admin";
+import Librarian from "./components/Librarian";
+import Libadmin from "./components/Libadmin";
 
 function App() {
   return (
@@ -31,7 +33,9 @@ function App() {
             <Route path="/books" element={<Books />} />
             <Route path="/history" element={<Mybooks />} />
             
-            <Route path="/admin/books" element={<Admin />} />
+            <Route path="/libadmin" element={<Libadmin />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/*" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
          
